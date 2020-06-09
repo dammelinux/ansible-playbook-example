@@ -1,0 +1,12 @@
+- hosts: webserver
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: General packages are installed
+    yum: name={{ item }} state=installed
+    with_items:
+      - tree
+      - wget
+      - unzip
+      - curl
+    tags: General_Packages

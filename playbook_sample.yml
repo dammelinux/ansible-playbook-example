@@ -1,0 +1,10 @@
+- hosts: local
+  tasks:
+  - name: Ping
+    ping:
+  - name: Get IP
+    command:
+      cmd: ip addr
+  - name: List
+    command:
+      cmd: tree /var/log/

@@ -1,0 +1,17 @@
+- hosts: webserver
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: httpd is installed
+    yum: name=httpd state=installed
+
+  - name: httpd is running and enabled
+    service: name=httpd state=started enabled=yes
+
+  - name: open port 80
+    firewalld:
+      port: 80/tcp
+      permanent: yes
+      immediate: yes
+      state: enabled
+
